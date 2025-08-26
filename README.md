@@ -1,78 +1,54 @@
 Credit Card Fraud Detection
-This project implements a simple machine learning pipeline to detect fraudulent credit card transactions. It uses a synthetic dataset mimicking real-world transaction records with the goal of classifying transactions as fraudulent or non-fraudulent.
+
+This project implements a **machine learning pipeline** to detect fraudulent credit card transactions using a synthetic dataset. The goal is to classify transactions as **fraudulent** or **legitimate** while addressing the challenges of data imbalance.
 
 Project Overview
-Credit card fraud is a serious issue in the financial industry, causing billions of dollars in losses annually. Detecting fraudulent transactions early is crucial for reducing these losses and protecting customers.
 
-This project builds a foundational fraud detection model using Python and popular data science libraries. The dataset contains features such as transaction amount, type, and date, with labels identifying fraudulent transactions.
+Credit card fraud is a major issue in the financial industry, causing billions in losses annually. Detecting fraud early helps reduce losses and protect customers.  
+
+This project builds a **foundational fraud detection model** using Python and popular data science libraries.
 
 Dataset
-The dataset used in this project is synthetically created by me to simulate credit card transactions for fraud detection learning purposes.
 
+The dataset is **synthetically generated** to simulate real-world transactions for learning purposes.
 
 Columns:
+- `TransactionID` — Unique identifier for each transaction  
+- `TransactionDate` — Date of transaction  
+- `Amount` — Transaction amount (in currency)  
+- `TransactionType` — Type: *Payment, Withdrawal, Purchase*  
+- `IsFraud` — Label (1 = Fraud, 0 = Legitimate)  
 
-TransactionID — Unique identifier for each transaction.
-
-TransactionDate — Date the transaction occurred.
-
-Amount — Transaction amount in currency.
-
-TransactionType — Type of transaction: Payment, Withdrawal, or Purchase.
-
-IsFraud — Label where 1 indicates fraud and 0 indicates legitimate transaction.
 
 Project Components
+
 Data Preprocessing
-
-Convert transaction timestamps to datetime objects.
-
-Extract additional time-based features (day of week, day of month).
-
-Encode categorical variables with one-hot encoding.
-
-Normalize the transaction amount feature.
-
-Check for and handle missing values.
+- Convert timestamps to datetime  
+- Extract time-based features (day of week, day of month)  
+- One-hot encode categorical variables  
+- Normalize transaction amount  
+- Handle missing values  
 
 Model Training
-
-Split data into training and test sets (80-20).
-
-Train a Random Forest classifier to detect fraud.
-
-Evaluate model performance using accuracy, precision, recall, and F1-score.
-
+- Split data into **train (80%)** and **test (20%)**  
+- Train a **Random Forest Classifier**  
+- Evaluate with **Accuracy, Precision, Recall, F1-score**  
 
 Imbalance Handling
-
-Apply techniques to handle the severe fraud class imbalance:
-
-Class weighting in Random Forest.
-
-Synthetic Minority Over-sampling Technique (SMOTE).
-
+Fraud detection faces **class imbalance** (very few fraud cases). Techniques used:  
+- Class weighting in Random Forest  
+- **SMOTE (Synthetic Minority Oversampling Technique)**  
 
 Results Summary
-Basic Random Forest achieved high overall accuracy but failed to detect fraud due to class imbalance.
+- **Basic Random Forest**: High accuracy but poor fraud detection (bias towards majority class).  
+- **With Class Weights**: Limited improvement.  
+- **With SMOTE Oversampling**: Better recall for fraud detection, but more false positives.  
 
-Using class weights alone did not improve fraud detection significantly.
-
-Applying SMOTE oversampling increased fraud detection recall but also produced more false positives.
-
-The project shows the importance of addressing data imbalance in fraud detection.
-
+Key takeaway: **Handling class imbalance is critical in fraud detection.**
 
 Technologies Used
-Python 3.x
-
-Pandas, NumPy
-
-Scikit-learn
-
-Imbalanced-learn (SMOTE)
-
-Matplotlib/Seaborn (optional for visualization)
-
-
-
+- **Python 3.x**  
+- **Pandas, NumPy** (data processing)  
+- **Scikit-learn** (ML models & evaluation)  
+- **Imbalanced-learn (SMOTE)** (imbalance handling)  
+- **Matplotlib, Seaborn** (visualization)  
